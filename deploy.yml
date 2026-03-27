@@ -1,0 +1,39 @@
+---
+version: "2.0"
+services:
+  claude-code:
+    image: ghcr.io/decloudnodeslab/claude-code:latest
+    env:
+      - WEB_PORT=8080
+      - WEB_PASSWORD=CHANGE_ME_TO_A_LONG_RANDOM_PASSWORD
+      - CLAUDE_CONFIG_DIR=/home/coder/.claude
+      - DISABLE_AUTOUPDATER=1
+    expose:
+      - port: 8080
+        as: 80
+        proto: http
+        to:
+          - global: true
+
+profiles:
+  compute:
+    claude-code:
+      resources:
+        cpu:
+          units: 2.0
+        memory:
+          size: 6Gi
+        storage:
+          size: 50Gi
+
+  placement:
+    akash:
+      pricing:
+        claude-code:
+          denom: uact
+          amount: 100000
+deployment:
+  claude-code:
+    akash:
+      profile: claude-code
+      count: 1
