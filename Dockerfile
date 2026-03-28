@@ -20,9 +20,9 @@ RUN mkdir -p /home/coder/.claude/project \
              /home/coder/.claude/config \
  && curl -fsSL https://claude.ai/install.sh | bash
 
-COPY --chown=coder:coder run.sh /usr/local/bin/run.sh
+COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 
 WORKDIR /home/coder/.claude/project
-
+RUN code-server --install-extension Anthropic.claude-code
 ENTRYPOINT ["/usr/bin/env", "bash", "/usr/local/bin/run.sh"]
