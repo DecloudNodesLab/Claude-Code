@@ -2,18 +2,22 @@
 version: "2.0"
 services:
   claude-code:
-    image: ghcr.io/decloudnodeslab/claude-code:latest
+    image: ghcr.io/decloudnodeslab/claude-code:latest@sha256:fbdb51613271534b244df4530de0d3fee27088bd24169be9ad21fb65860983b0
     env:
       - WEB_PORT=8080
       - WEB_PASSWORD=CHANGE_ME_TO_A_LONG_RANDOM_PASSWORD
       - CLAUDE_CONFIG_DIR=/home/coder/.claude
       - DISABLE_AUTOUPDATER=1
+    params:
+      storage:
+        claude:
+          mount: /home/coder/.claude
+          readOnly: false
     expose:
       - port: 8080
         as: 80
         to:
           - global: true
-
 profiles:
   compute:
     claude-code:
@@ -23,8 +27,12 @@ profiles:
         memory:
           size: 6Gi
         storage:
-          size: 50Gi
-
+          - size: 4Gi
+          - name: claude
+            size: 32Gi
+            attributes:
+              persistent: true
+              class: beta3
   placement:
     akash:
       pricing:
