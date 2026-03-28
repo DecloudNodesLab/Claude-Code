@@ -13,5 +13,5 @@ password: ${WEB_PASSWORD}
 cert: false
 disable-telemetry: true
 EOF
-
+export PATH=/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 exec code-server /root/.claude/project
