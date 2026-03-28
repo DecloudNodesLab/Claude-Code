@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     ca-certificates \
  && rm -rf /var/lib/apt/lists/*
-RUN code-server --install-extension Anthropic.claude-code
+COPY anthropic.claude-code.vsix /tmp/anthropic.claude-code.vsix
+RUN code-server --install-extension /tmp/anthropic.claude-code.vsix
 ENV HOME=/home/coder/.claude
 ENV PATH=/home/coder/.local/bin:$PATH
 ENV CLAUDE_CONFIG_DIR=/home/coder/.claude
