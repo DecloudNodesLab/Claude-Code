@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     ca-certificates \
  && rm -rf /var/lib/apt/lists/*
-
+RUN code-server --install-extension Anthropic.claude-code
 ENV HOME=/home/coder/.claude
 ENV PATH=/home/coder/.local/bin:$PATH
 ENV CLAUDE_CONFIG_DIR=/home/coder/.claude
@@ -24,5 +24,5 @@ COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 
 WORKDIR /home/coder/.claude/project
-RUN code-server --install-extension Anthropic.claude-code
+
 ENTRYPOINT ["/usr/bin/env", "bash", "/usr/local/bin/run.sh"]
