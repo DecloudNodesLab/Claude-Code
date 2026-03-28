@@ -14,17 +14,17 @@ USER coder
 ENV HOME=/home/coder
 ENV PATH=/home/coder/.local/bin:$PATH
 ENV CLAUDE_CONFIG_DIR=/home/coder/.claude
-ENV XDG_CONFIG_HOME=/home/coder/.config
+ENV XDG_CONFIG_HOME=/home/coder/.claude/config
 ENV DISABLE_AUTOUPDATER=1
 
-RUN mkdir -p /home/coder/.claude \
+RUN mkdir -p /home/coder/.claude/project \
              /home/coder/.config/code-server \
-             /home/coder/project \
+             /home/coder/.claude/config \
  && curl -fsSL https://claude.ai/install.sh | bash
 
 COPY --chown=coder:coder run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 
-WORKDIR /home/coder/project
+WORKDIR /home/coder/.claude/project
 
 ENTRYPOINT ["/usr/bin/env", "bash", "/usr/local/bin/run.sh"]
