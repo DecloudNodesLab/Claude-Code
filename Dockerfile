@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
  && rm -rf /var/lib/apt/lists/*
 
-ENV HOME=/home/coder
+ENV HOME=/home/coder/.claude
 ENV PATH=/home/coder/.local/bin:$PATH
 ENV CLAUDE_CONFIG_DIR=/home/coder/.claude
 ENV XDG_CONFIG_HOME=/home/coder/.claude/config
