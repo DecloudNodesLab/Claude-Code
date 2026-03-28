@@ -22,7 +22,7 @@ RUN code-server --install-extension Anthropic.claude-code
 
 COPY run.sh /usr/bin/run.sh
 RUN chmod +x /usr/bin/run.sh \
-    cp root/.local/bin/cloude /usr/bin/
+    cp root/.local/bin/claude /usr/bin/
 
 WORKDIR /root/.claude/project
 
