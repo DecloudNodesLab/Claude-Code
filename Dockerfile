@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     ca-certificates \
  && rm -rf /var/lib/apt/lists/*
-
+RUN code-server --install-extension Anthropic.claude-code
 ENV HOME=/home/coder/.claude
 ENV PATH=/home/coder/.local/bin:$PATH
 ENV CLAUDE_CONFIG_DIR=/home/coder/.claude
@@ -18,8 +18,8 @@ ENV DISABLE_AUTOUPDATER=1
 RUN mkdir -p /home/coder/.claude/project \
              /home/coder/.config/code-server \
              /home/coder/.claude/config \
- && curl -fsSL https://claude.ai/install.sh | bash
-RUN code-server --install-extension Anthropic.claude-code
+            && curl -fsSL https://claude.ai/install.sh | bash
+
 COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 
