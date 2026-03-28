@@ -14,4 +14,4 @@ cert: false
 disable-telemetry: true
 EOF
 
-exec code-server /home/coder/project
+exec code-server /home/coder/.claude/project
