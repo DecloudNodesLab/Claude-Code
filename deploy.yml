@@ -2,7 +2,7 @@
 version: "2.0"
 services:
   claude-code:
-    image: ghcr.io/decloudnodeslab/claude-code:latest@sha256:fbdb51613271534b244df4530de0d3fee27088bd24169be9ad21fb65860983b0
+    image: ghcr.io/decloudnodeslab/claude-code:latest@sha256:431301015bd31a2f11e969975bf9517ad363a5191ab077a2235e70c80de42d72
     env:
       - WEB_PORT=8080
       - WEB_PASSWORD=CHANGE_ME_TO_A_LONG_RANDOM_PASSWORD
@@ -12,7 +12,6 @@ services:
       storage:
         claude:
           mount: /home/coder/
-          readOnly: false
     expose:
       - port: 8080
         as: 80
