@@ -16,4 +16,4 @@ EOF
 
 code-server --install-extension Anthropic.claude-code || true
 
-exec code-server /home/.claude/project
+exec code-server /home/root/.claude/project
