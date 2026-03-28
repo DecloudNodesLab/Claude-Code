@@ -14,6 +14,4 @@ cert: false
 disable-telemetry: true
 EOF
 
-code-server --install-extension Anthropic.claude-code || true
-
-exec code-server /home/root/.claude/project
+exec code-server /root/.claude/project
