@@ -20,8 +20,7 @@ RUN mkdir -p /home/coder/.claude/project \
              /home/coder/.config/code-server \
              /home/coder/.claude/config \
  && curl -fsSL https://claude.ai/install.sh | bash
-COPY anthropic.claude-code.vsix /tmp/anthropic.claude-code.vsix
-RUN code-server --install-extension /tmp/anthropic.claude-code.vsix
+RUN code-server --install-extension Anthropic.claude-code
 COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 
