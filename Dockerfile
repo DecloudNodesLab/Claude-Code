@@ -22,9 +22,9 @@ RUN curl -fsSL https://claude.ai/install.sh | bash
 
 RUN code-server --install-extension Anthropic.claude-code
 
-COPY run.sh /usr/local/bin/run.sh
-RUN chmod +x /usr/local/bin/run.sh
+COPY run.sh /usr/bin/run.sh
+RUN chmod +x /usr/bin/run.sh
 
 WORKDIR /root/.claude/project
 
-ENTRYPOINT ["/usr/bin/env", "bash", "/usr/local/bin/run.sh"]
+ENTRYPOINT ["/usr/bin/env", "bash", "/usr/bin/run.sh"]
